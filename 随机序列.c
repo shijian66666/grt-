@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include <limits.h>
+int main(){
+    int T;
+    
+    scanf("%d",&T);
+    while (T--)
+    {
+        long long a=LLONG_MIN;
+        long long b=LLONG_MAX;
+        long long t=0;
+        long long f=0;
+        int n;
+        scanf("%d",&n);
+        
+        for (int i = 0; i < n; i++) {
+            long long q;
+            scanf("%lld", &q);
+            
+            if (q > a) a = q;
+            if (q < b) b = q;
+            
+            t+=q;
+            f+=q*q;
+        }
+        long long range = a - b;
+        double mean = (double)t / n;
+        double varia = ((double)f / n) - (mean * mean);
+ 
+        printf("%lld %.3f\n", range, varia);
+    }
+    return 0;
+}
